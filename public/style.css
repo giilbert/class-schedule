@@ -1,0 +1,180 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+    transition-property: background-color, color;
+    transition-duration: 0.1s;
+}
+
+body {
+    margin: 0;
+    padding: 0px;
+    text-align: center;
+    overflow: hidden;
+    background-color: var(--bg);
+}
+
+p, h1, label  {
+    color: var(--font-color);
+}
+
+a {
+    text-decoration: none;
+    color: #6495ed;
+}
+
+
+
+.light {
+    --bg: #ffffff;
+    --bg-secondary: #eeeeee;
+    --font-color: #222222;
+}
+
+.dark {
+    --bg: #222222;
+    --bg-secondary: #333333;
+    --font-color: #eeeeee;
+}
+
+
+
+
+#center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#date {
+    margin: 0;
+}
+
+#open-config {
+    width: 38px;
+    height: 38px;
+    background-color: var(--bg-secondary);
+
+    position: fixed;
+    right: 10px;
+    top: 10px;
+
+    z-index: 999;
+    border-radius: 5px;
+    outline: none;
+    outline-style: none;
+    border-style: solid;
+}
+
+#open-config:hover {
+    cursor: pointer;
+    width: 42px;
+    height: 42px;
+    right: 8px;
+    top: 8px;
+}
+
+#config-menu > input {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 5px;
+    border-radius: 2px;
+}
+
+#bottom {
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
+    text-align: center;
+}
+
+#footer {
+    width: 100%;
+    position: fixed;
+    bottom: 30px;
+    text-align: center;
+}
+
+#love {
+    position: fixed;
+    right: 10px;
+    bottom: -8px;
+    opacity: 0.4;
+}
+
+#time-travel-button:hover {
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 768px) {
+    /* for mobile */
+    #date {
+        font-size: 9vw;
+    }
+
+    #timeDisplay {
+        font-size: 5vw;
+    }
+
+    #current-class {
+        font-size: 4vw;
+    }
+
+    #config-menu {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        padding-top: 50px;
+        width: 100%;
+        height: 100%;
+        transition-property: opacity;
+        transition-duration: 0.1s;
+        background-color: var(--bg-secondary);
+    }
+
+    #bottom {
+        bottom: 90px;
+    }
+}
+
+@media (min-width: 768px) {
+    /* for computer */
+
+    #date {
+        font-size: 5vw;
+    }
+
+    #timeDisplay {
+        font-size: 3vw;
+    }
+
+    #current-class {
+        font-size: 2vw;
+    }
+
+    #config-menu {
+        width: 300px;
+        height: 70%;
+        transition-property: opacity;
+        transition-duration: 0.1s;
+        background-color: var(--bg-secondary);
+        border-radius: 30px;
+        vertical-align: middle;
+        padding-top: 30px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    
+}
