@@ -1,5 +1,6 @@
 .firebase
-.firebase.json
+firebase.json
 .firebaserc
+firebase-debug.log
 
 schedule.json
