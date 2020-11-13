@@ -132,10 +132,25 @@ let getCurrentClass = () => {
     return `Period ${currentPeriod}  |  ${currentClass}<br />-----<br />Next: ${nextClass} @ ${nextClassTime}`;
 }
 
+
+
+let pop = () => {
+    let el = document.getElementById('party-popper');
+
+    el.style.top = '50%';
+    
+    setTimeout(() => {
+        el.style.top = '150%'
+    }, 2000)
+}
+
+
 let update = () => {
 
     date = new Date(); // <<<<<<<<<<<<<<<<<<<<<<<<<<< edit this for testing
 
+    if (date.getHours() == '14' && date.getMinutes() == '0' && date.getSeconds() == '0') pop();
+    
     dateDisplay.innerHTML = `
     
     <strong>
@@ -198,7 +213,7 @@ window.addEventListener('load', () => {
 
     loadData();
     update();
-    setInterval(update, 1000); // repeats every second
+    setInterval(update, 500); // repeats every second
 
 
 

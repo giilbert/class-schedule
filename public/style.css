@@ -113,6 +113,22 @@ a {
 }
 
 
+/* party popper animation */
+
+#party-popper {
+    position: fixed;
+    top: 150%;
+    left: 50%;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: 30vh;
+    margin-top: 0px;
+    transition-property: top, transform;
+    transition-duration: 1s;
+}
+
+
 @media only screen and (max-width: 768px) {
     /* for mobile */
     #date {
