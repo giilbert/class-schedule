@@ -69,7 +69,40 @@
 
 
         <!-- time travelling -->
-        <div id="time-travel">
+        <div id="time-travel" style="opacity: 0%">
+            <h2>date</h2>
+            <form onsubmit="return false">
+                <label for="month">month: </label>
+                <select name="month" class='tt-input'>
+                    <option>1 &nbsp &nbsp January</option>
+                    <option>2 &nbsp &nbsp February</option>
+                    <option>3 &nbsp &nbsp March</option>
+                    <option>4 &nbsp &nbsp April</option>
+                    <option>5 &nbsp &nbsp May</option>
+                    <option>6 &nbsp &nbsp June</option>
+                    <option>7 &nbsp &nbsp July</option>
+                    <option>8 &nbsp &nbsp August</option>
+                    <option>9 &nbsp &nbsp September</option>
+                    <option>10 &nbsp October</option>
+                    <option>11 &nbsp November</option>
+                    <option>12 &nbsp December</option>
+                </select>
+
+                <br><br>
+
+                <label for="day">day: </label>
+                <input name="day"type="text" maxlength="2" class='tt-input'>
+
+                <br><br>
+
+                <label for="day">year: </label>
+                <input name="day"type="text" maxlength="4" class='tt-input'>
+                
+                <br><br><br>
+
+                <button type="submit" id="tt-submit">time travel!</button>
+            </form>  
+
 
         </div>
 
@@ -77,7 +110,7 @@
 
         <!-- footer -->
         <div id="footer">
-            <a id="time-travel-button" onclick="alert('doesnt do anything yet :( come back later')">time travel!</a>
+            <a id="time-travel-button">time travel!</a>
         </div>
 
 

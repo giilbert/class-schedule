@@ -227,6 +227,32 @@ window.addEventListener('load', () => {
         document.body.classList.add('dark');
         darkMode = true;
     }
+
+
+    // time machine
+    let timeTravelButton = document.getElementById('time-travel-button');
+    let timeTravelMenuOpen = false;
+    timeTravelButton.addEventListener('click', e => {
+        let menu = document.getElementById('time-travel');
+        
+        if (!timeTravelMenuOpen) {
+            document.getElementById('open-config').style.display = 'none';
+
+            menu.style.display = 'block'
+            menu.style.opacity = '100%'
+
+            timeTravelButton.innerHTML = 'close'
+            timeTravelMenuOpen = true;
+        } else if (timeTravelMenuOpen) {
+            document.getElementById('open-config').style.display = 'block';
+
+            menu.style.opacity = '0%'
+            menu.style.display = 'none'
+
+            timeTravelButton.innerHTML = 'time travel!'
+            timeTravelMenuOpen = false;
+        }
+    })
 });
 
 
