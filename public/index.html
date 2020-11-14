@@ -74,36 +74,38 @@
             <form onsubmit="return false">
                 <label for="month">month: </label>
                 <select name="month" class='tt-input'>
-                    <option>1 &nbsp &nbsp January</option>
-                    <option>2 &nbsp &nbsp February</option>
-                    <option>3 &nbsp &nbsp March</option>
-                    <option>4 &nbsp &nbsp April</option>
-                    <option>5 &nbsp &nbsp May</option>
-                    <option>6 &nbsp &nbsp June</option>
-                    <option>7 &nbsp &nbsp July</option>
-                    <option>8 &nbsp &nbsp August</option>
-                    <option>9 &nbsp &nbsp September</option>
-                    <option>10 &nbsp October</option>
-                    <option>11 &nbsp November</option>
-                    <option>12 &nbsp December</option>
-                </select>
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>August</option>
+                    <option>September</option>
+                    <option>October</option>
+                    <option>November</option>
+                    <option>December</option>
+                </select> <br>
+                
+                <div class='spacing-10px'></div>
 
-                <br><br>
+                <label for="day">day: </label> 
+                <input name="day"type="text" maxlength="2" class='tt-input'> <br>
 
-                <label for="day">day: </label>
-                <input name="day"type="text" maxlength="2" class='tt-input'>
-
-                <br><br>
+                <div class='spacing-10px'></div>
 
                 <label for="day">year: </label>
-                <input name="day"type="text" maxlength="4" class='tt-input'>
-                
-                <br><br><br>
+                <input name="day"type="text" maxlength="4" class='tt-input'> <br>
+
+                <div class='spacing-10px'></div>
 
                 <button type="submit" id="tt-submit">time travel!</button>
             </form>  
 
-
+            <div id="tt-results" style="display: none">
+                <h1 id="tt-date-info">...</h1>
+            </div>
         </div>
 
 

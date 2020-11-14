@@ -253,6 +253,8 @@ window.addEventListener('load', () => {
             timeTravelMenuOpen = false;
         }
     })
+
+    document.getElementById('time-travel').addEventListener('submit', timeMachineHandler)
 });
 
 
@@ -292,4 +294,58 @@ let darkModeToggle = (e) => {
         darkMode = false;
         localStorage.setItem('theme', false);
     }
+}
+
+
+// time machine
+let timeMachineHandler = e => {
+
+    let results = document.getElementById('tt-results');
+
+    results.style.display = 'block';
+
+    if (!scheduleData) {
+        results.innerHTML = 'schedule data hasn\'t loaded yet, please wait';
+        return;
+    }
+
+    // create Date from inputs
+
+    let target = e.target;
+    let yearIn = target[2]
+    let monthIn = target[0]
+    let dayIn = target[1]
+
+    let future = new Date(`${monthIn.value} ${dayIn.value} ${yearIn.value}`)
+
+    console.log(future)
+
+    if (future == 'Invalid Date') {
+        results.innerHTML = `
+        <h3 style="color: #FC5746">Inputted date was invalid :(</h3>
+        `
+    }
+
+    if (future.getDay() == '0' || future.getDay() == '6') {
+        results.innerHTML = `
+        <h3>Weekend</h3>
+        <p>No school</p>
+        `;
+        return;
+    }
+
+    let schedule = scheduleData.schedule;
+    let weekSchedule = schedule[((date.getWeek() % 3) + 1).toString()]
+    let daySchedule = weekSchedule[future.getDay()]
+    
+
+    let out = '';
+    daySchedule.forEach((v, i) => {
+        out += `<p>${++i}. ${v}</p>`;
+    })
+
+    results.innerHTML = `
+    <h3>Week ${((date.getWeek() % 3) + 1).toString()} ${daysOfTheWeek[future.getDay()]}</h3>
+    ${out}
+    `;
 }

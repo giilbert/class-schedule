@@ -3,7 +3,7 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none; 
+    user-select: none;
     transition-property: background-color, color;
     transition-duration: 0.1s;
 }
@@ -16,7 +16,13 @@ body {
     background-color: var(--bg);
 }
 
-p, h1, h2, label  {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+label {
     color: var(--font-color);
 }
 
@@ -25,6 +31,9 @@ a {
     color: #6495ed;
 }
 
+.spacing-10px {
+    height: 10px;
+}
 
 
 .light {
@@ -38,9 +47,6 @@ a {
     --bg-secondary: #333333;
     --font-color: #eeeeee;
 }
-
-
-
 
 #center {
     position: absolute;
@@ -125,16 +131,32 @@ a {
     transition-duration: 1s;
 }
 
-
 #time-travel {
     padding: 20px;
     text-align: center;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--font-color);
 }
 
 .tt-input {
+    background-color: var(--bg-secondary);
+    color: var(--font-color);
     padding-left: 10px;
-    height: 30px;
-    width: 120px;
+    height: 20px;
+    width: 90px;
+    border-color: var(--font-color);
+    border-width: 1px;
     border-radius: 8px;
 }
 
@@ -144,9 +166,16 @@ a {
 
 #tt-submit {
     width: 100px;
-    height: 20px;
+    height: 30px;
+    background-color: var(--bg-secondary);
+    color: var(--font-color);
+    border-radius: 8px;
+    border-color: var(--font-color);
 }
 
+#tt-submit:focus {
+    outline: none;
+}
 
 @media only screen and (max-width: 768px) {
     /* for mobile */
@@ -176,6 +205,14 @@ a {
 
     #bottom {
         bottom: 90px;
+    }
+
+    #time-travel-button {
+        z-index: 2;
+        border-radius: 5px;
+        border-style: solid;
+        border-color: var(--font-color);
+        background-color: var(--bg-secondary);
     }
 
     #time-travel {
@@ -239,6 +276,4 @@ a {
         -webkit-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
-
-    
 }
