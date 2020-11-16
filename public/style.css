@@ -209,10 +209,6 @@ a {
 
     #time-travel-button {
         z-index: 2;
-        border-radius: 5px;
-        border-style: solid;
-        border-color: var(--font-color);
-        background-color: var(--bg-secondary);
     }
 
     #time-travel {
