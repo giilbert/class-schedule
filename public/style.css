@@ -171,6 +171,11 @@ a {
     color: var(--font-color);
     border-radius: 8px;
     border-color: var(--font-color);
+    border-style: solid;
+}
+
+#tt-submit:hover {
+    cursor: pointer;
 }
 
 #tt-submit:focus {

@@ -255,6 +255,11 @@ window.addEventListener('load', () => {
     })
 
     document.getElementById('time-travel').addEventListener('submit', timeMachineHandler)
+
+    // set default values for time travel
+    document.getElementsByTagName('form')[0].children[1].value = monthsOfTheYear[date.getMonth()]
+    document.getElementsByTagName('form')[0].children[5].value = date.getDate();
+    document.getElementsByTagName('form')[0].children[9].value = date.getFullYear();
 });
 
 
