@@ -340,7 +340,7 @@ let timeMachineHandler = e => {
     }
 
     let schedule = scheduleData.schedule;
-    let weekSchedule = schedule[((date.getWeek() % 3) + 1).toString()]
+    let weekSchedule = schedule[((future.getWeek() % 3) + 1).toString()]
     let daySchedule = weekSchedule[future.getDay()]
     
 
