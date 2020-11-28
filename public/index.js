@@ -350,7 +350,7 @@ let timeMachineHandler = e => {
     })
 
     results.innerHTML = `
-    <h3>Week ${((date.getWeek() % 3) + 1).toString()} ${daysOfTheWeek[future.getDay()]}</h3>
+    <h3>Week ${((future.getWeek() % 3) + 1).toString()} ${daysOfTheWeek[future.getDay()]}</h3>
     ${out}
     `;
 }
