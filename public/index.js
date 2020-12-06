@@ -7,6 +7,9 @@ let monthsOfTheYear = 'January February March April May June July August Septemb
 
 let dateDisplay, classDisplay, scheduleData;
 
+let customBGEnabled = localStorage.getItem('custom-bg-enabled') == 'true' ? true : false;
+let customBGURL = localStorage.getItem('custom-bg-url') ? localStorage.getItem('custom-bg-url') : 'https://louie.co.nz/25th_hour/';
+
 
 // no default implementation yet
 Date.prototype.getWeek = function () {
@@ -260,6 +263,22 @@ window.addEventListener('load', () => {
     document.getElementsByTagName('form')[0].children[1].value = monthsOfTheYear[date.getMonth()]
     document.getElementsByTagName('form')[0].children[5].value = date.getDate();
     document.getElementsByTagName('form')[0].children[9].value = date.getFullYear();
+
+    document.getElementById('custom-bg-toggle').checked = customBGEnabled;
+    document.getElementById('custom-bg-toggle').addEventListener('click', customBGHandler)
+
+    document.getElementById('custom-bg-url').value = customBGURL;
+
+    document.getElementById('custom-bg-url').addEventListener('change', customBGInputChange)
+
+    if (!customBGEnabled) {
+        document.getElementById('custom-bg').removeAttribute('src');
+        document.getElementById('custom-bg-url').setAttribute('disabled', '');
+    } else {
+        document.getElementById('custom-bg').setAttribute('src', customBGURL);
+        document.getElementById('custom-bg').style.display = 'block';
+        document.getElementById('custom-bg-url').removeAttribute('disabled');
+    }
 });
 
 
@@ -353,4 +372,34 @@ let timeMachineHandler = e => {
     <h3>Week ${((future.getWeek() % 3) + 1).toString()} ${daysOfTheWeek[future.getDay()]}</h3>
     ${out}
     `;
+}
+
+let customBGHandler = () => {
+    if (!customBGEnabled) {
+        // enable
+        localStorage.setItem('custom-bg-enabled', 'true')
+        customBGEnabled = true;
+
+        document.getElementById('custom-bg').setAttribute('src', customBGURL);
+        document.getElementById('custom-bg').style.display = 'block';
+        document.getElementById('custom-bg-url').removeAttribute('disabled');
+    } else {
+        // disable
+        localStorage.setItem('custom-bg-enabled', 'false')
+        customBGEnabled = false;
+
+        document.getElementById('custom-bg').setAttribute('src', '')
+        document.getElementById('custom-bg').style.display = 'none';
+        document.getElementById('custom-bg-url').setAttribute('disabled', '')
+    }
+}
+
+let customBGInputChange = e => {
+    localStorage.setItem('custom-bg-url', e.target.value)
+    document.getElementById('custom-bg').setAttribute('src', e.target.value)
+}
+
+let recommendCustomBG = () => {
+    localStorage.setItem('custom-bg-url', 'https://louie.co.nz/25th_hour/')
+    document.getElementById('custom-bg').setAttribute('src', 'https://louie.co.nz/25th_hour/')
 }

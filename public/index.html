@@ -20,8 +20,9 @@
         />
 
         <link href="style.css" rel="stylesheet" />
-        <script src="index.min.js?v=11+30+2020"></script>
+        <script src="index.min.js?v=12+5+2020"></script>
 
+        <!-- <script src="index.js"></script> -->
         <!--
             unminified version
             <script src="index.js"></script>
@@ -29,6 +30,10 @@
     </head>
 
     <body class="light">
+
+        <div id="center-bg">
+
+        </div>
 
         <div id="center">
             <p id="date">loading stuff :)</p>
@@ -69,9 +74,26 @@
             <label for="dark-mode">dark mode </label>
             <input name="dark-mode" type="checkbox" id="dark-mode-toggle">
 
+            <br />
+
+            <label for="custom-bg">custom background </label>
+            <input name="custom-bg" type="checkbox" id="custom-bg-toggle">
+
+            <br />
+
+            <label for="custom-bg-url">url </label> <br />
+            <input name="custom-bg-url" type="url" id="custom-bg-url" style="width: 200px">
+            
+            <br /> <br />
+
+            <a id="custom-bg-recommendation" href="#" onclick="recommendCustomBG()">25th hour</a>
+
+
             <div id="bottom">
+                <a href="/changelog.html">changelog</a>
+                <br />
                 <a href="https://github.com/giilbert/class-schedule" target="_blank" rel="noopener noreferrer">github</a>
-                <br>
+                <br />
                 <a href="https://forms.gle/VCNBhwqrvXXfFPah8" target="_blank" rel="noopener noreferrer">report an issue</a>
             </div>
         </div>
@@ -129,5 +151,7 @@
         <p id="love">made with ❤️ by gilbert</p>
 
         <h1 id='party-popper'>🎉</h1>
+
+        <iframe src="https://louie.co.nz/25th_hour/" style="width:100vw;height:100vh;border-width:0;display:none" id="custom-bg"></iframe>
     </body>
 </html>
