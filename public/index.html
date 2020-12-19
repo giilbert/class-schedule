@@ -11,6 +11,7 @@
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
+        <link rel="manifest" href="/manifest.webmanifest" />
 
         <title>8AL schedule</title>
 
@@ -153,5 +154,13 @@
         <h1 id='party-popper'>🎉</h1>
 
         <iframe src="" style="width:100vw;height:100vh;border-width:0;display:none" id="custom-bg"></iframe>
+
+
+        <script>
+            if ("serviceWorker" in navigator) {
+                // register service worker
+                navigator.serviceWorker.register("sw.js");
+            }
+        </script>
     </body>
 </html>
