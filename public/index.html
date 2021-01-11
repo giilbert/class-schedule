@@ -21,7 +21,7 @@
         />
 
         <link href="style.css" rel="stylesheet" />
-        <script src="index.min.js?v=12+5+2020"></script>
+        <script src="index.js?v=12+26+2020"></script>
 
         <!-- <script src="index.js"></script> -->
         <!--
@@ -155,11 +155,14 @@
 
         <iframe src="" style="width:100vw;height:100vh;border-width:0;display:none" id="custom-bg"></iframe>
 
-
         <script>
-            if ("serviceWorker" in navigator) {
-                // register service worker
-                navigator.serviceWorker.register("sw.js");
+            if (window.navigator && navigator.serviceWorker) {
+                navigator.serviceWorker.getRegistrations()
+                    .then(function (registrations) {
+                        for (let registration of registrations) {
+                            registration.unregister();
+                        }
+                    });
             }
         </script>
     </body>

@@ -11,6 +11,8 @@ let customBGEnabled = localStorage.getItem('custom-bg-enabled') == 'true' ? true
 let customBGURL = localStorage.getItem('custom-bg-url') ? localStorage.getItem('custom-bg-url') : 'https://louie.co.nz/25th_hour/';
 
 
+let offset = 1;
+
 // no default implementation yet
 Date.prototype.getWeek = function () {
     let onejan = new Date(this.getFullYear(), 0, 1);
@@ -42,7 +44,7 @@ let getCurrentClass = () => {
 
     if (date.getHours() * 60 + date.getMinutes() < 8 * 60 + 30) { // 8:30 = 8 * 60 + 3
         return 'school starts at 8:30 first class is ' +
-            classSchedule[((date.getWeek() % 3) + 1).toString()]
+            classSchedule[((date.getWeek() % 3) + offset).toString()]
             [(date.getDay()).toString()]
             [0];
     }
@@ -94,7 +96,7 @@ let getCurrentClass = () => {
 
     let currentClass;
     try {
-        currentClass = classSchedule[((date.getWeek() % 3) + 1).toString()]
+        currentClass = classSchedule[((date.getWeek() % 3) + offset).toString()]
         [date.getDay().toString()]
         [(currentPeriod - 1).toString()]
     } catch (e) {
@@ -112,7 +114,7 @@ let getCurrentClass = () => {
         if (currentPeriod == 7) {
             nextClass = 'out of school'
         } else {
-            nextClass = classSchedule[((date.getWeek() % 3) + 1).toString()]
+            nextClass = classSchedule[((date.getWeek() % 3) + offset).toString()]
             [date.getDay().toString()]
             [(currentPeriod).toString()]
         }
@@ -123,7 +125,7 @@ let getCurrentClass = () => {
     
     // construct date and format time
     let nextClassTime = new Date(`
-            ${date.getMonth()} ${date.getDate()} ${date.getFullYear()} 
+            ${date.getMonth() + 1} ${date.getDate()} ${date.getFullYear()} 
             ${bellSchedule[currentPeriod][0]}:${bellSchedule[currentPeriod][1]}
         `)
         .toLocaleTimeString('en-us', {
@@ -170,7 +172,7 @@ let update = () => {
     `;
 
     classDisplay.innerHTML = `
-    Schedule week #${(date.getWeek() % 3) + 1} <br />
+    Schedule week #${(date.getWeek() % 3) + offset} <br />
     ${getCurrentClass()}
     `;
 }
@@ -359,7 +361,7 @@ let timeMachineHandler = e => {
     }
 
     let schedule = scheduleData.schedule;
-    let weekSchedule = schedule[((future.getWeek() % 3) + 1).toString()]
+    let weekSchedule = schedule[((future.getWeek() % 3) + offset).toString()]
     let daySchedule = weekSchedule[future.getDay()]
     
 
