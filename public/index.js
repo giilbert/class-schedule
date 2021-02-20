@@ -17,12 +17,18 @@ let customBGURL = localStorage.getItem('custom-bg-url')
   ? localStorage.getItem('custom-bg-url')
   : 'https://louie.co.nz/25th_hour/';
 
-let offset = 0;
+const offset = 3;
 
 // no default implementation yet
 Date.prototype.getWeek = function () {
   let onejan = new Date(this.getFullYear(), 0, 1);
   return Math.ceil(((this - onejan) / 86400000 + onejan.getDay() + 1) / 7);
+};
+
+const getScheduleWeek = (d = date) => {
+  let a = (d.getWeek() % 3) + offset;
+  console.log('week #' + a);
+  return a < 4 ? a : a % 3;
 };
 
 let getCurrentClass = () => {
@@ -31,14 +37,6 @@ let getCurrentClass = () => {
 
   let bellSchedule = scheduleData.bellSchedule;
   let classSchedule = scheduleData.schedule;
-
-  // console.log(bellSchedule, classSchedule)
-
-  let formattedTime = date.toLocaleTimeString('en-US', {
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: true,
-  });
 
   // weekends
   if (date.getDay() == 0 || date.getDay() == 6) {
@@ -49,9 +47,7 @@ let getCurrentClass = () => {
     // 8:30 = 8 * 60 + 3
     return (
       'school starts at 8:30 first class is ' +
-      classSchedule[((date.getWeek() % 3) + offset).toString()][
-        date.getDay().toString()
-      ][0]
+      classSchedule[getScheduleWeek().toString()][date.getDay().toString()][0]
     );
   }
 
@@ -100,9 +96,9 @@ let getCurrentClass = () => {
   let currentClass;
   try {
     currentClass =
-      classSchedule[((date.getWeek() % 3) + offset).toString()][
-        date.getDay().toString()
-      ][(currentPeriod - 1).toString()];
+      classSchedule[getScheduleWeek().toString()][date.getDay().toString()][
+        (currentPeriod - 1).toString()
+      ];
   } catch (e) {
     return 'an error occured: ' + e;
   }
@@ -119,9 +115,9 @@ let getCurrentClass = () => {
       nextClass = 'out of school';
     } else {
       nextClass =
-        classSchedule[((date.getWeek() % 3) + offset).toString()][
-          date.getDay().toString()
-        ][currentPeriod.toString()];
+        classSchedule[getScheduleWeek().toString()][date.getDay().toString()][
+          currentPeriod.toString()
+        ];
     }
   } catch (e) {
     nextClass = 'error see console for info';
@@ -181,7 +177,7 @@ let update = () => {
     `;
 
   classDisplay.innerHTML = `
-    Schedule week #${(date.getWeek() % 3) + offset} <br />
+    Schedule week #${getScheduleWeek()} <br />
     ${getCurrentClass()}
     `;
 };
@@ -352,8 +348,6 @@ let timeMachineHandler = (e) => {
 
   let future = new Date(`${monthIn.value} ${dayIn.value} ${yearIn.value}`);
 
-  console.log(future);
-
   if (future == 'Invalid Date') {
     results.innerHTML = `
         <h3 style="color: #FC5746">Inputted date was invalid :(</h3>
@@ -369,7 +363,7 @@ let timeMachineHandler = (e) => {
   }
 
   let schedule = scheduleData.schedule;
-  let weekSchedule = schedule[((future.getWeek() % 3) + offset).toString()];
+  let weekSchedule = schedule[getScheduleWeek(future).toString()];
   let daySchedule = weekSchedule[future.getDay()];
 
   let out = '';
@@ -378,7 +372,7 @@ let timeMachineHandler = (e) => {
   });
 
   results.innerHTML = `
-    <h3>Week ${((future.getWeek() % 3) + 1).toString()} ${
+    <h3>Week ${getScheduleWeek(future).toString()} ${
     daysOfTheWeek[future.getDay()]
   }</h3>
     ${out}
