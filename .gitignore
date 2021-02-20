@@ -1,6 +1,5 @@
+node_modules
 .firebase
 firebase.json
 .firebaserc
 firebase-debug.log
-
-schedule.json

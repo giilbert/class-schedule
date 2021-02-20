@@ -1,4 +1,4 @@
-let SCHEDULE_URL = 'schedule.json';
+import scheduleData from './schedule.json';
 
 let date = new Date();
 
@@ -9,7 +9,7 @@ let monthsOfTheYear = 'January February March April May June July August Septemb
   ' '
 );
 
-let dateDisplay, classDisplay, scheduleData;
+let dateDisplay, classDisplay;
 
 let customBGEnabled =
   localStorage.getItem('custom-bg-enabled') == 'true' ? true : false;
@@ -32,9 +32,6 @@ const getScheduleWeek = (d = date) => {
 };
 
 let getCurrentClass = () => {
-  // might not have finished loading schedule.json
-  if (!scheduleData) return;
-
   let bellSchedule = scheduleData.bellSchedule;
   let classSchedule = scheduleData.schedule;
 
@@ -182,33 +179,6 @@ let update = () => {
     `;
 };
 
-let loadData = () => {
-  let headers = new Headers();
-
-  headers.append('pragma', 'no-cache');
-  headers.append('cache-control', 'no-cache');
-
-  fetch(SCHEDULE_URL, {
-    headers: headers,
-  })
-    .then((res) => {
-      res
-        .json()
-        .then((a) => {
-          classDisplay.innerHTML = 'parsing data..';
-          scheduleData = a;
-        })
-        .catch((e) => {
-          classDisplay.innerHTML = 'an error occurred :( <br>' + e;
-          console.error(e);
-        });
-    })
-    .catch((e) => {
-      classDisplay.innerHTML = 'an error occurred :( <br>' + e;
-      console.error(e);
-    });
-};
-
 let darkMode = localStorage.getItem('theme');
 //if (!darkMode) darkMode = false;
 
@@ -216,7 +186,6 @@ window.addEventListener('load', () => {
   dateDisplay = document.getElementById('date');
   classDisplay = document.getElementById('current-class');
 
-  loadData();
   update();
   setInterval(update, 500); // repeats every second
 
@@ -291,6 +260,10 @@ window.addEventListener('load', () => {
     document.getElementById('custom-bg').style.display = 'block';
     document.getElementById('custom-bg-url').removeAttribute('disabled');
   }
+
+  document
+    .getElementById('custom-bg-recommendation')
+    .addEventListener('click', recommendCustomBG);
 });
 
 // actual config menu stuff
@@ -333,11 +306,6 @@ let timeMachineHandler = (e) => {
   let results = document.getElementById('tt-results');
 
   results.style.display = 'block';
-
-  if (!scheduleData) {
-    results.innerHTML = "schedule data hasn't loaded yet, please wait";
-    return;
-  }
 
   // create Date from inputs
 
