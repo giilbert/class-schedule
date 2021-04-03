@@ -27,7 +27,7 @@ Date.prototype.getWeek = function () {
 
 const getScheduleWeek = (d = date) => {
   let a = (d.getWeek() % 3) + offset;
-  console.log('week #' + a);
+  // console.log('week #' + a);
   return a < 4 ? a : a % 3;
 };
 
