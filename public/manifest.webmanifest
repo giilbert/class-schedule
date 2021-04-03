@@ -1,16 +1,16 @@
 {
-    "short_name": "8AL Schedule",
-    "name": "8AL Schedule",
-    "description": "Where do I go for class?",
-    "display": "minimal-ui",
-    "start_url": "/",
-    "icons": [
-        {
-            "src": "/calendar200.png",
-            "type": "image/png",
-            "sizes": "256x256"
-        }
-    ],
-    "theme_color": "#aaaaaa",
-    "background_color": "#aaaaaa"
+  "short_name": "8AL Schedule",
+  "name": "8AL Schedule",
+  "description": "Where do I go for class?",
+  "display": "minimal-ui",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/calendar512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "theme_color": "#aaaaaa",
+  "background_color": "#aaaaaa"
 }

@@ -17,7 +17,7 @@ let customBGURL = localStorage.getItem('custom-bg-url')
   ? localStorage.getItem('custom-bg-url')
   : 'https://louie.co.nz/25th_hour/';
 
-const offset = 3;
+const offset = 2;
 
 // no default implementation yet
 Date.prototype.getWeek = function () {
